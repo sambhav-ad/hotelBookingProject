@@ -1,7 +1,4 @@
 import mongoose from "mongoose";
-import Booking from "../models/Booking.js";
-import Hotel from "../models/Hotel.js";
-import Room from "../models/room.js";
 
 const bookingSchema = new mongoose.Schema({
     user: { type: String, ref: "User", required: true },

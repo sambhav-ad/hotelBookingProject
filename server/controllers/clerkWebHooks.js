@@ -1,5 +1,9 @@
 import User from "../models/User.js";
 import { Webhook } from "svix";
+import Booking from "../models/Booking.js";
+import Hotel from "../models/Hotel.js";
+import Room from "../models/room.js";
+
 
 const clerkWebhooks = async (req, res)=>{
     console.log("Webhook hit");
