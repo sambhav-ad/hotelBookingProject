@@ -47,7 +47,28 @@ const clerkWebhooks = async (req, res)=>{
             }
 
             case "user.deleted": {
-                await User.findByIdAndDelete(data.id);
+
+                // Delete bookings made by the user
+                await Booking.deleteMany({ user: data.id });
+
+                // Check if the user owns a hotel
+                const hotel = await Hotel.findOne({ owner: data.id });
+
+                if (hotel) {
+
+                    // Delete all bookings for this hotel
+                    await Booking.deleteMany({ hotel: hotel._id });
+
+                    // Delete all rooms of this hotel
+                    await Room.deleteMany({ hotel: hotel._id });
+
+                    // Delete the hotel
+                    await Hotel.deleteOne({ _id: hotel._id });
+                }
+
+                // Delete the user
+                await User.deleteOne({ _id: data.id });
+
                 break;
             }
 
