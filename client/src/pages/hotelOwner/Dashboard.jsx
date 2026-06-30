@@ -79,7 +79,8 @@ const Dashboard = () => {
             {dashboardData.bookings.map((item, index) => (
                 <tr key={index}>
                 <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
-                    {item.user.username}
+                    {item.user?.username || "Deleted User"}
+
                 </td>
 
                 <td className='py-3 px-4 text-gray-700 border-t border-gray-300 max-sm:hidden'>
