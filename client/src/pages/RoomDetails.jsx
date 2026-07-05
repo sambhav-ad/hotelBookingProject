@@ -102,7 +102,7 @@ const RoomDetails = () => {
         </div>
 
         {/* Room Images */}
-        <div className='flex flex-col lg:flex-row mt-6 gap-6'>
+        {/* <div className='flex flex-col lg:flex-row mt-6 gap-6'>
             <div className='lg:w-1/2 w-full'>
                 <img src={mainImage} alt="Room Image"
                 className='w-full rounded-xl shadow-lg object-cover' />
@@ -115,6 +115,36 @@ const RoomDetails = () => {
                     shadow-md object-cover cursor-pointer ${mainImage === image && 'outline-3 outline-orange-500'}`} />
                 ))}
             </div>
+        </div> */}
+
+
+        {/* Room Images */}
+        <div className="grid lg:grid-cols-2 gap-4 mt-6">
+
+            {/* Main Image */}
+            <div>
+                <img
+                    src={mainImage}
+                    alt="Room"
+                    className="w-full h-[520px] object-cover rounded-xl shadow-lg"
+                />
+            </div>
+
+            {/* Thumbnail Images */}
+            <div className="grid grid-cols-2 gap-4 auto-rows-[250px]">
+                {room.images
+                    .filter((image) => image !== mainImage)
+                    .map((image, index) => (
+                        <img
+                            key={index}
+                            src={image}
+                            alt="Room"
+                            onClick={() => setMainImage(image)}
+                            className="w-full h-full object-cover rounded-xl shadow-md cursor-pointer hover:ring-2 hover:ring-orange-500 transition"
+                        />
+                    ))}
+            </div>
+
         </div>
 
         {/* Room Highlights */}
