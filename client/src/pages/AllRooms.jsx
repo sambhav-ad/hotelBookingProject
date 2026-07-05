@@ -193,7 +193,7 @@ const AllRooms = () => {
                 <div className='text-xs cursor-pointer'>
                     <span onClick={()=> setOpenFilters(!openFilters)} className='lg:hidden'>
                         {openFilters ? 'HIDE' : 'SHOW'}</span>
-                    <span className='hidden lg:block'>CLEAR</span>
+                    <span onClick={clearFilters} className='hidden lg:block cursor-pointer hover:text-black'>CLEAR</span>
                 </div>
             </div>
 
